@@ -1,0 +1,23 @@
+{
+  "name": "Sidebar Window Focus Demo",
+  "version": "0.1",
+  "description": "Send a \"sleep\" signal to the sidebar when it's parent window loses focus.",
+  "manifest_version": 3,
+  "background": {
+    "page": "background.html",
+    "service_worker": "background.mjs",
+    "type": "module"
+  },
+  "action": {},
+  "sidebar_action": {
+    "default_title": "SWF Demo",
+    "default_panel": "sidebar.html",
+    "open_at_install": true
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "permissions": [
+    "sidePanel"
+  ]
+}
