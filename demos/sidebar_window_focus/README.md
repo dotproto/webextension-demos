@@ -6,7 +6,7 @@ This demo provides a concrete implementation of
 
 Browser | Tested in | Works? | Notes
 ------- | --------- | ------ | ---
-Chrome  | 150       | ❌     | Blocked by https://crbug.com/40925107
+Chrome  | 150       | ❌     | Blocked by [crbug/40925107](https://crbug.com/40925107)
 Firefox | 152       | ✅     | ---
 Safari  | 26.5      | ❌     | Doesn't support any sidebar APIs
 
