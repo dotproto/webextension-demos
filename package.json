@@ -1,0 +1,14 @@
+{
+  "name": "webextension-demos",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^10.7.0",
+    "typescript": "^7.0.2",
+    "prettier": "^3.9.5"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --build",
+    "check-deps": "pnpm -r exec depcheck"
+  }
+}
