@@ -19,5 +19,10 @@
   },
   "permissions": [
     "sidePanel"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sidebar-window-focus@dotproto"
+    }
+  }
 }
