@@ -1,7 +1,10 @@
 const storage = {};
+
 storage.all = {
+
   async populate() {
     const keys = Object.keys(storage).filter(k => k != 'all');
+    log(`## Populating storage areas (incognito: ${browser.extension.inIncognitoContext}) ##`)
     for (const storageType of keys) {
       log(`Populating ${storageType}`);
       try {
@@ -12,8 +15,10 @@ storage.all = {
       }
     }
   },
+
   async dump() {
     const keys = Object.keys(storage).filter(k => k != 'all');
+    log(`## Dumping storage areas (incognito: ${browser.extension.inIncognitoContext}) ##`)
     for (const storageType of keys) {
       log(`Dumping ${storageType}`);
       try {
@@ -24,7 +29,8 @@ storage.all = {
         console.error(e);
       }
     }
-  }
+  },
+
 };
 
 storage['browser.storage'] = {
@@ -42,7 +48,7 @@ storage['browser.storage'] = {
     return Object.entries(data);
   },
 
-}
+};
 
 storage.localStorage = {
 
@@ -70,9 +76,10 @@ storage.localStorage = {
     return entries;
   },
 
-}
+};
 
 storage.idb = {
+
   async populate() {
     const request = self.indexedDB.open("idb-test", 1);
     request.onupgradeneeded = (event) => {
@@ -88,9 +95,8 @@ storage.idb = {
       store.put(Date.now(), "timestamp");
     };
   },
-  async dump() {
-    const dbList = await self.indexedDB.databases();
 
+  async dump() {
     return new Promise(resolve => {
       const request = self.indexedDB.open("idb-test", 1);
       request.onsuccess = (event) => {
@@ -115,9 +121,11 @@ storage.idb = {
       };
     });
   },
-}
+
+};
 
 storage.opfs = {
+
   async populate() {
     const root = await navigator.storage.getDirectory();
 
@@ -133,8 +141,8 @@ storage.opfs = {
       await writable1.write(contents);
       await writable1.close();
     }
-
   },
+
   async dump() {
     const entries = [];
     const root = await navigator.storage.getDirectory();
@@ -146,5 +154,6 @@ storage.opfs = {
       entries.push([name, content]);
     }
     return entries;
-  }
+  },
+
 };
